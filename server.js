@@ -1,9 +1,10 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 
 const app = express();
-// enviroment var for port
-const PORT = process.env.PORT || 3000;
+// environment var for port
+const port = process.env.PORT || 3000;
 
 
 // setup view engine
@@ -28,6 +29,10 @@ app.get('/contact', (req,res) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port  ${PORT}`);
+app.post('/contactUs', (req,res) => {
+    console.log(req.body);
+})
+
+app.listen(port,() => {
+    console.log(`Server is running on port ${port}`);
 });
