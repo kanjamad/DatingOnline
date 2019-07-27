@@ -3,6 +3,9 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 
 const app = express();
+// Use body parser middleware
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 // environment var for port
 const port = process.env.PORT || 3000;
 
@@ -31,7 +34,7 @@ app.get('/contact', (req,res) => {
 
 app.post('/contactUs', (req,res) => {
     console.log(req.body);
-})
+});
 
 app.listen(port,() => {
     console.log(`Server is running on port ${port}`);
